@@ -3,7 +3,6 @@ package cajero14Cola02;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Cola {
-//	public ArrayDeque<Cliente> clientes;
 	public ConcurrentLinkedQueue<Cliente> clientes = new ConcurrentLinkedQueue<>();
 
 	public Cola() {
