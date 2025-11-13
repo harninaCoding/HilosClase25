@@ -2,25 +2,24 @@ package cajero14Market03;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Optional;
 
 //solo hay una caja
 public class Caja implements Runnable {
 
 	private String nombre;
 
-	private Cola clientes;
+	private Cola cola;
 	private Long timeStamp;
 
 	public Caja(String nombre, Long timeStamp,Cola cola) {
 		this(nombre);
-		this.clientes =cola;
+		this.cola =cola;
 		this.timeStamp = timeStamp;
 	}
 
-	public boolean add(Cliente e) {
-		return clientes.add(e);
+	public void add(Cliente e) {
+		cola.push(Optional.ofNullable(e));
 	}
 
 	public Caja() {
@@ -57,6 +56,7 @@ public class Caja implements Runnable {
 	}
 
 	private void esperarXsegundos(int segundos) {
+		//cuando te funcione cambia por wasteTime
 		try {
 			Thread.sleep(segundos * 1000);
 		} catch (InterruptedException ex) {
@@ -64,10 +64,17 @@ public class Caja implements Runnable {
 		}
 	}
 
-	@Override
-	public void run() {
-		while (!clientes.isEmpty()) {
-			procesarCompra(clientes.poll(), timeStamp);
+		@Override
+		public void run() {
+			do {
+				System.out.println("buscando clientes "+getNombre());
+				try {
+					procesarCompra(cola.get(), 1);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+//				System.out.println("salgo del wait");
+			} while (true);
 		}
 	}
-}
