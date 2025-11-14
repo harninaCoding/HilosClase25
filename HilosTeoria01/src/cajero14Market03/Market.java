@@ -21,7 +21,6 @@ public class Market implements Runnable {
 	@Override
 	public void run() {
 		do {
-
 			if (!cola.totalClientesAlcanzado()) {
 				cola.put(ClientesOM.getRandomClient());
 //				System.out.println("creando cliente hay "+cola.size()+" clientes"+" total:"+cola.totalClientesAlcanzado());
