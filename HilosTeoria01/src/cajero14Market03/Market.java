@@ -4,10 +4,21 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Market implements Runnable {
-	Cola cola = new Cola();
-	Caja cajero1 = new Caja("Cajero 1",10l, cola);
-	Caja cajero2 = new Caja("Cajero 2",10l, cola);
-	
+	private Cola cola = new Cola();
+	private Caja cajero1 = new Caja("Cajero 1",10l, cola);
+	private Caja cajero2 = new Caja("Cajero 2",10l, cola);
+	//autopsia
+	public int cantidadClientes=0;
+
+	public Caja getCajero1() {
+		return cajero1;
+	}
+
+	public Caja getCajero2() {
+		return cajero2;
+	}
+	//autopsia
+
 
 	public Market() {
 		super();
@@ -23,11 +34,11 @@ public class Market implements Runnable {
 		do {
 			if (!cola.totalClientesAlcanzado()) {
 				cola.put(ClientesOM.getRandomClient());
-//				System.out.println("creando cliente hay "+cola.size()+" clientes"+" total:"+cola.totalClientesAlcanzado());
+				//autopsia
+				cantidadClientes++;
 				Utiles.wasteTime(5000);
 			}
 		} while (!cola.totalClientesAlcanzado());
-		System.out.println("termino market");
 	}
 	
 	

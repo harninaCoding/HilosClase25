@@ -11,6 +11,8 @@ public class Caja implements Runnable {
 
 	private Cola cola;
 	private Long timeStamp;
+	//autopsia
+	public int contadorClientes=0;
 
 	public Caja(String nombre, Long timeStamp,Cola cola) {
 		this(nombre);
@@ -44,38 +46,36 @@ public class Caja implements Runnable {
 //		System.out.println("El cajero " + this.nombre + " COMIENZA A PROCESAR LA COMPRA DEL CLIENTE "
 //				+ cliente.getNombre() + " EN EL TIEMPO: " + older.getEpochSecond() + "seg");
 
-		for (int i = 0; i < cliente.getCarroCompra().length; i++) {
-			this.esperarXsegundos(cliente.getCarroCompra()[i]);
+		try {
+			for (int i = 0; i < cliente.getCarroCompra().length; i++) {
+				this.esperarXsegundos(cliente.getCarroCompra()[i]);
 //			System.out.println("Procesado el producto " + (i + 1) + " ->Tiempo: "
 //					+ Duration.between(now, now = Instant.now()).getSeconds() + "seg");
-		}
+			}
 
-		System.out.println("El cajero " + this.nombre + " HA TERMINADO DE PROCESAR " + cliente.getNombre()
-				+ " EN EL TIEMPO: " + Duration.between(older, now) + "seg");
+//			System.out.println("El cajero " + this.nombre + " HA TERMINADO DE PROCESAR " + cliente.getNombre()
+//					+ " EN EL TIEMPO: " + Duration.between(older, now) + "seg");
+		} catch (Exception e) {
+//			System.out.println("Caja:"+"cliente null");
+//			e.printStackTrace();
+		}
 
 	}
 
 	private void esperarXsegundos(int segundos) {
-		//cuando te funcione cambia por wasteTime
 		Utiles.wasteTime(segundos);
-//		try {
-//			Thread.sleep(segundos * 1000);
-//		} catch (InterruptedException ex) {
-//			Thread.currentThread().interrupt();
-//		}
 	}
 
 		@Override
 		public void run() {
 			do {
-//				System.out.println("buscando clientes "+getNombre());
 				try {
 					procesarCompra(cola.get(), 1);
+					contadorClientes++;
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-//				System.out.println("salgo del wait");
 			} while (true);
+			
 		}
 	}

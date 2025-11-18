@@ -5,7 +5,8 @@ import java.util.Optional;
 
 public class Cola {
 	public ArrayDeque<Cliente> clientes = new ArrayDeque<>();
-	private int totalClientes = 0;
+	private int totalClientesAgregados = 0;
+	public int totalClientesProcesados = 0;
 
 	public void push(Optional<Cliente> randomClient) {
 		randomClient.ifPresent((cliente) -> clientes.push(cliente));
@@ -16,25 +17,29 @@ public class Cola {
 	}
 
 	public synchronized Cliente get() throws InterruptedException {
-		while (clientes.isEmpty() && !totalClientesAlcanzado()) {
+		while (!(totalClientesProcesados<totalClientesAgregados)) {
 			wait();
 		}
 //		System.out.println("is Empty "+clientes.isEmpty());
 //		System.out.println("is total "+totalClientesAlcanzado());
-		if(!clientes.isEmpty())
-		return clientes.pop();
+		if (!clientes.isEmpty()) {
+			Cliente pop = clientes.pop();
+			totalClientesProcesados++;
+			return pop;
+		}
 		return null;
 	}
 
 	public boolean totalClientesAlcanzado() {
-		return totalClientes > 20;
+		return totalClientesAgregados > 20;
 	}
 
 	public synchronized void put(Optional<Cliente> optional) {
-		totalClientes++;
+		totalClientesAgregados++;
+//		System.out.println("Cola:"+totalClientesAgregados);
 		push(optional);
 //		optional.ifPresent((cliente)->System.out.println("hay cliente nuevo"));
-		notifyAll();
+		notify();
 	}
 
 	public int size() {
