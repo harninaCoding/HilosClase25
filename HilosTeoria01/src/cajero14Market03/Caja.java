@@ -57,7 +57,7 @@ public class Caja implements Runnable {
 //					+ " EN EL TIEMPO: " + Duration.between(older, now) + "seg");
 		} catch (Exception e) {
 //			System.out.println("Caja:"+"cliente null");
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 
 	}

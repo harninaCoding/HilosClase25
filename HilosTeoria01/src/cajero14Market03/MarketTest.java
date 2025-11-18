@@ -1,5 +1,7 @@
 package cajero14Market03;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -15,10 +17,11 @@ class MarketTest {
 		executorService.execute(superMercado);
 		executorService.awaitTermination(2l, TimeUnit.SECONDS);
 		executorService.shutdown();
-		System.out.println("TEST: clientes creados: "+superMercado.cantidadClientes);
-		System.out.println("TEST: clientes gestionados 1: "+superMercado.getCajero1().contadorClientes);
-		System.out.println("TEST: clientes gestionados 2: "+superMercado.getCajero2().contadorClientes);
-		
+//		System.out.println("TEST: clientes creados: "+superMercado.cantidadClientes);
+//		System.out.println("TEST: clientes gestionados 1: "+superMercado.getCajero1().contadorClientes);
+//		System.out.println("TEST: clientes gestionados 2: "+superMercado.getCajero2().contadorClientes);
+		assertEquals(superMercado.cantidadClientes, superMercado.getCajero1().contadorClientes+ superMercado.getCajero2().contadorClientes);
+		assertEquals(superMercado.getCajero1().contadorClientes,superMercado.getCajero2().contadorClientes,2);
 	}
 
 }
