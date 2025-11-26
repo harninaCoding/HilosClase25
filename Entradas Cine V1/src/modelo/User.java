@@ -37,6 +37,10 @@ public class User implements Callable<Optional<Reference>> {
 		this.randomReference = randomReference;
 	}
 	
+	public String getId() {
+		return id;
+	}
+
 	public PitCode askForASeat() {
 		randomReference= new Reference('a', 1);
 		UserRequest userRequest = new UserRequest(this, randomReference);

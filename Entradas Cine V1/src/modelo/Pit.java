@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Pit {
 	public int amountRows = 10;
@@ -16,7 +17,7 @@ public class Pit {
 		}
 	}
 
-	private Row getRow(char letter) {
+	public Row getRow(char letter) {
 		return rows.get(letter);
 	}
 
@@ -55,6 +56,11 @@ public class Pit {
 
 	public Seat getSeat(Reference reference) {
 		return getSeat(reference.getRow(),reference.getColum());
+	}
+
+	public List<Reference> getFreeSeats() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
