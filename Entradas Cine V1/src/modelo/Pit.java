@@ -28,14 +28,12 @@ public class Pit {
 		return fila.getSeat(seat);
 	}
 
-	private void takenSeat(Seat seat) {
-		seat.taken = true;
-	}
-	public  boolean takeSeat(Reference reference) {
-		return takeSeat(reference.getRow(),reference.getColum());
+	
+	public  boolean takeSeat(Reference reference,User user) {
+		return takeSeat(reference.getRow(),reference.getColum(),user);
 	}
 	
-	private  boolean takeSeat(char letter, int seat) {
+	private  boolean takeSeat(char letter, int seat,User user) {
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
@@ -43,14 +41,21 @@ public class Pit {
 		}
 		Seat requestedSeat = getSeat(letter, seat);
 		if (!requestedSeat.taken) {
-			takenSeat(requestedSeat);
+			requestedSeat.taken=true;
+			requestedSeat.setTakerUser(user);
 			return true;
 		}
 		return false;
 	}
 
-	public PitCode responseRequest(UserRequest userRequest) {
-		if(takeSeat(userRequest.getReference())) return PitCode.free;
+	public PitCode responseRequest(UserRequest userRequest,User user) {
+		if(takeSeat(userRequest.getReference(),user)) return PitCode.free;
 		return PitCode.taken;
 	}
+
+	public Seat getSeat(Reference reference) {
+		return getSeat(reference.getRow(),reference.getColum());
+	}
+
+	
 }

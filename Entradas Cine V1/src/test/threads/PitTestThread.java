@@ -1,21 +1,24 @@
-package test;
+package test.threads;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 import modelo.Pit;
+import modelo.PitCode;
 import modelo.Reference;
 import modelo.User;
+import modelo.UserRequest;
 
-class PitTest {
+class PitTestThread {
 
 	@Test
 	void test() throws ExecutionException, InterruptedException {
@@ -28,4 +31,5 @@ class PitTest {
 		System.out.println(randomReference);
 		executorService.shutdown();
 	}
+	
 }

@@ -1,4 +1,4 @@
-package test;
+package test.threads;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
