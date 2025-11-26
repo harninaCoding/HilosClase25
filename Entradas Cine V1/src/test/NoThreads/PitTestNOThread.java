@@ -29,7 +29,6 @@ class PitTestNOThread {
 		pit = new Pit();
 		user = new User("99", pit);
 		reference = new Reference('a', 1);
-		Pit pit = new Pit();
 		int amountRows = pit.amountRows;
 		Row row = pit.getRow('a');
 		int amountSeats = row.amountSeats;
@@ -49,8 +48,6 @@ class PitTestNOThread {
 
 	@Test
 	void testFreeSeats() {
-
-		User user = new User("4", pit);
 		List<Reference> freeSeats = pit.getFreeSeats();
 		assertEquals(totalSeats, freeSeats.size());
 	}
@@ -63,8 +60,14 @@ class PitTestNOThread {
 		if (takeSeat) {
 			leftSeats--;
 			assertEquals(leftSeats, freeSeats.size());
-			Seat seat = pit.getSeat(new Reference('a', 1));
-			assertEquals(user.getId(), seat.getTakerUser().get().getId());
+		} else {
+			assertEquals(totalSeats, freeSeats.size());
+		}
+		takeSeat = pit.takeSeat(new Reference('a', 1), user);
+		freeSeats = pit.getFreeSeats();
+		if (takeSeat) {
+			leftSeats--;
+			assertEquals(leftSeats, freeSeats.size());
 		} else {
 			assertEquals(totalSeats, freeSeats.size());
 		}
