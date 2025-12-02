@@ -28,10 +28,8 @@ class CallableUserTest {
 			submit = executorService.submit(user);
 			assertEquals(Optional.empty(), submit.get());
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

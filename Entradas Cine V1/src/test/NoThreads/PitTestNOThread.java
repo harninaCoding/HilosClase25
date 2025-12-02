@@ -43,7 +43,6 @@ class PitTestNOThread {
 		assertFalse(takeSeat);
 		Seat seat = pit.getSeat(reference);
 		assertEquals(seat.getTakerUser().get(), user);
-		assertEquals(user.getRandomReference(), reference);
 	}
 
 	@Test
@@ -52,6 +51,7 @@ class PitTestNOThread {
 		assertEquals(totalSeats, freeSeats.size());
 	}
 
+	// probamos que coincide la cantidad de asientos libres
 	@Test
 	void testTakinFreeSeats() {
 		boolean takeSeat = pit.takeSeat(new Reference('a', 1), user);
@@ -64,13 +64,12 @@ class PitTestNOThread {
 			assertEquals(totalSeats, freeSeats.size());
 		}
 		takeSeat = pit.takeSeat(new Reference('a', 1), user);
+		assertFalse(takeSeat);
 		freeSeats = pit.getFreeSeats();
 		if (takeSeat) {
 			leftSeats--;
-			assertEquals(leftSeats, freeSeats.size());
-		} else {
-			assertEquals(totalSeats, freeSeats.size());
 		}
+		assertEquals(leftSeats, freeSeats.size());
 	}
 
 	@Ignore

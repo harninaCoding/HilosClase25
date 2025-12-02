@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Row {
 	public int amountSeats = 10;
@@ -21,5 +22,9 @@ public class Row {
 
 	public Seat getSeat(int number) {
 		return seat.get(number);
+	}
+	
+	public List<Seat> getFreeSeats() {
+		return seat.stream().filter(Seat::isFree).collect(Collectors.toList());
 	}
 }

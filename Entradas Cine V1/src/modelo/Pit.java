@@ -1,12 +1,15 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Pit {
 	public int amountRows = 10;
 	private HashMap<Character, Row> rows;
 	private char letter = 'a';
+	private List<Reference> avaliableSeats;
 
 	public Pit() {
 		super();
@@ -58,9 +61,17 @@ public class Pit {
 		return getSeat(reference.getRow(),reference.getColum());
 	}
 
-	public List<Reference> getFreeSeats() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Reference> getFreeSeats(){
+		avaliableSeats=new ArrayList();
+		rows.entrySet().stream().forEach(entry
+					->{Row row=entry.getValue();
+						for (int i = 0; i < row.amountSeats; i++) {
+							if(row.getSeat(i).isFree()) {
+							avaliableSeats.add(new Reference(entry.getKey(),i));
+						}}}
+				);
+		
+		return avaliableSeats;
 	}
 
 	

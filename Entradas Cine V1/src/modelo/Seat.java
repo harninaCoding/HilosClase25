@@ -18,5 +18,7 @@ public class Seat {
 		this.takerUser = Optional.of(takerUser);
 	}
 
-	
+	public boolean isFree() {
+		return !taken;
+	}
 }
