@@ -20,12 +20,8 @@ class UserTestNoThread {
 	void testAskForASeat() throws Exception {
 		Pit pit = new Pit();
 		User user = new User("99", pit);
-		Reference reference = new Reference('a', 1);
-		pit.takeSeat(reference, user);
-		// siempre pide la misma a1
-		user.askForASeat(reference);
-		assertEquals(reference, user.getRandomReference());
-		Optional<User> takerUser = pit.getSeat(reference).getTakerUser();
+		user.pillaEntrada(pit);
+		Optional<User> takerUser = pit.getSeat(user.getRandomReference()).getTakerUser();
 		takerUser.ifPresent(a -> {
 			assertEquals(a, user);
 		});

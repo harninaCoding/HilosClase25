@@ -18,17 +18,8 @@ public class User implements Callable<Optional<Reference>> {
 
 	@Override
 	public Optional<Reference> call() {
-//		boolean takeSeat = false;
-//		do {
-//			// aqui obtengo el asiento que quiero
-//			randomReference = Reference.getRandomReference();
-//			// Pedir la reserva de asiento
-//			takeSeat = pit.takeSeat(randomReference);
-//		} while (!takeSeat);
-		PitCode pitCode = askForASeat(randomReference);
-		if(pitCode==PitCode.free)
-		return Optional.of(randomReference);
-		return Optional.ofNullable(null);
+		if(randomReference==null) return pillaEntrada(pit);
+		return Optional.empty();
 	}
 
 	public Reference getRandomReference() {
