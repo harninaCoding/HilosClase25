@@ -23,7 +23,7 @@ class UserTestNoThread {
 		Reference reference = new Reference('a', 1);
 		pit.takeSeat(reference, user);
 		// siempre pide la misma a1
-		user.askForASeat();
+		user.askForASeat(reference);
 		assertEquals(reference, user.getRandomReference());
 		Optional<User> takerUser = pit.getSeat(reference).getTakerUser();
 		takerUser.ifPresent(a -> {
