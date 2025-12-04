@@ -3,6 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
 public class Pit {
 	public int amountRows = 10;
@@ -76,6 +77,10 @@ public class Pit {
 	public PitCode responseRequest(UserRequest userRequest) {
 		if(takeSeat(userRequest.getReference(),userRequest.getUser())) return PitCode.free;
 		return PitCode.taken;
+	}
+
+	public Boolean isTaken(Reference reference) {
+		return !getSeat(reference).isFree();
 	}
 
 	

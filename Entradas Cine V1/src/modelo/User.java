@@ -5,11 +5,14 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
 
+import utiles.Wasters;
+
 public class User implements Callable<Optional<Reference>> {
 	private String id;
 	private Pit pit;
-	private Reference randomReference=null;
-	
+	private Reference randomReference = new Reference('x', 100);
+	private static Reference ReferenceControl = new Reference('x', 100);
+
 	public User(String id, Pit pit) {
 		super();
 		this.id = id;
@@ -18,8 +21,16 @@ public class User implements Callable<Optional<Reference>> {
 
 	@Override
 	public Optional<Reference> call() {
-		if(randomReference==null) return pillaEntrada(pit);
-		return Optional.empty();
+//		Wasters.wasteTime(100,true);
+		Optional<Reference> retorno = Optional.empty();
+		if (randomReference.equals(ReferenceControl)) {
+			retorno = pillaEntrada(pit);
+		}
+		return retorno;
+	}
+
+	public static Reference getReferenceControl() {
+		return ReferenceControl;
 	}
 
 	public Reference getRandomReference() {
@@ -29,7 +40,7 @@ public class User implements Callable<Optional<Reference>> {
 	public void setRandomReference(Reference randomReference) {
 		this.randomReference = randomReference;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -41,14 +52,16 @@ public class User implements Callable<Optional<Reference>> {
 
 	public Optional<Reference> pillaEntrada(Pit pit2) {
 		List<Reference> freeSeats = pit.getFreeSeats();
-		PitCode pitCode;
-		Reference random;
-		do {
-			random = askRandomReference(freeSeats);
-			pitCode = askForASeat(random);
-		}while (pitCode!=PitCode.full&&pitCode==PitCode.taken);
-		if(pitCode==PitCode.free) {
-			randomReference=random;
+		if (freeSeats.size() > 0) {
+			PitCode pitCode;
+			Reference random;
+			do {
+				random = askRandomReference(freeSeats);
+				pitCode = askForASeat(random);
+			} while (pitCode != PitCode.full && pitCode == PitCode.taken);
+			if (pitCode == PitCode.free) {
+				randomReference = random;
+			}
 		}
 		return Optional.ofNullable(randomReference);
 	}
