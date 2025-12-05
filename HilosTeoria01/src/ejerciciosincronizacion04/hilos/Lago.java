@@ -16,7 +16,7 @@ public class Lago {
 		return instancia;
 	}
 
-	public synchronized void incrementarVida() {
+	public  void incrementarVida() {
 		vida++;
 		notify();
 	}
