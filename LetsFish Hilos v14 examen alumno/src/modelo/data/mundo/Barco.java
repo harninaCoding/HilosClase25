@@ -13,7 +13,7 @@ import modelo.data.mar.ServicioSatelite;
 import modelo.enums.TipoBarco;
 import utiles.Utiles;
 
-public class Barco implements Pesquero {
+public class Barco implements Pesquero{
 	protected String nombre;
 	private Coordenada posicionActual;
 	protected Puerto puertoBase;
@@ -133,4 +133,5 @@ public class Barco implements Pesquero {
 	public Mar getMar() {
 		return mar;
 	}
+
 }

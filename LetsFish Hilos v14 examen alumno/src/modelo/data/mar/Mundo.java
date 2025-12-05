@@ -27,10 +27,10 @@ public class Mundo {
 		int cantidadBarcos=20;
 		barcos=BarcosOM.getAll(mar,puertos,servicioSatelite,cantidadBarcos);
 		servicioSatelite=new ServicioSatelite(mar);
+		//arrancar los cardumenes
 	}
 
 	private void createDiaPesca() {
-		//arrancar los cardumenes
 		//arrancar los barcos
 		//si todos los barcos vuelven a puerto entonces pasamos al siguiente dia
 	}
