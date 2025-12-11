@@ -1,0 +1,14 @@
+﻿C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\escenario\Barrio.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\escenario\CuerpoPolicia.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\escenario\Londres.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\escenario\Posicion.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\interfaces\Accionable.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\interfaces\Deambulante.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\interfaces\Movible.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\interfaces\Posicionable.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\OM\PoblacionOM.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\personajes\Policia.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\personajes\Ratero.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\modelo\personajes\Rico.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\test\modelo\PoblacionTest.java
+C:\DAM 2425\examenes\2425\examenes Diciembre 24\GodSaveTheQueenV5 simplificando sin gravedad sin patrones\src\utiles\ShowMessages.java
